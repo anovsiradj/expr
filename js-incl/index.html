@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Avz</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$.fn.incl = function(part) {
+			this.each(function(index){
+				$(this).html('').load('part/'+part[index]+'.html');
+				// $(this).html('').html(part[index]);
+			});
+		}
+	</script>
+</head>
+<body>
+
+<div class="text-center">
+	<button onclick="$('.avz-incl').incl(['header','nav']);">HOME</button>
+	<button onclick="">HOME</button>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12 avz-incl">A</div>
+		<div class="col-md-12 avz-incl">B</div>
+		<div class="col-md-12 avz-incl">C</div>
+		<div class="col-md-12 avz-incl" id="footer">
+
+
+		<div class="row">
+			<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+				<h3>Bantuan</h3>
+				<ul class="list-unstyled">
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+				</ul>
+			</div>
+			<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+				<h3> Lorem Ipsum </h3>
+				<ul class="list-unstyled">
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+				</ul>
+			</div>
+			<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+				<h3> Lorem Ipsum </h3>
+				<ul class="list-unstyled">
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+				</ul>
+			</div>
+			<div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+				<h3> Lorem Ipsum </h3>
+				<ul class="list-unstyled">
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+					<li> <a href="#"> Lorem Ipsum </a> </li>
+				</ul>
+			</div>
+			<div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+				<h3>Langganan</h3>
+				<input type="text" class="text-center form-control"/>
+				<button class="btn  bg-gray" type="button"> Lorem ipsum <i class="fa fa-long-arrow-right"> </i> </button>
+			</div>
+		</div>
+
+
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
