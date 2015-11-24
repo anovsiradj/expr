@@ -1,3 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo</title>
+  
+  
+  <script type='text/javascript' src='/js/lib/dummy.js'></script>
+  
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    canvas { background: #eee; }
+  </style>
+  
+</head>
+<body>
+  <button onclick="drawRect()">play</button>
+<button onclick="downRect()">turn down</button>
+<canvas id="myCanvas" width="480" height="320"></canvas>
+<pre id="log"></pre>
+  
+
+
+
+<script type='text/javascript'>//<![CDATA[
+
 var l = document.getElementById("log");
 var buto = {};
 var rect_timer;
@@ -15,7 +45,6 @@ function makeRect() {
     // circle http://i.imgur.com/L5OrHko.gif
     // PI: http://i.imgur.com/19j00Nw.gif
 	ctx.beginPath();
-    // jadi di 1/2 o = PI, jadi 2 PI === 1 o.
     ctx.arc(50, 50, 50, 0, 2 * Math.PI, false);
 	//ctx.arc(n_x,n_y,100,100); // x,y,width,height
 	ctx.fillStyle = "#ac0"; // bg color
@@ -48,3 +77,10 @@ function doit() {
 function cl(m) {
     l.innerHTML = l.innerHTML+'\n'+m;
 };
+//]]> 
+
+</script>
+
+</body>
+
+</html>
