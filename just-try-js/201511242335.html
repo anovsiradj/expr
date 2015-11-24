@@ -1,25 +1,81 @@
+<!DOCTYPE html>
 <html>
 <head>
-<style>
-canvas { background: #eee; }
-</style>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo</title>
+  
+  
+  <script type='text/javascript' src='/js/lib/dummy.js'></script>
+  
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    canvas { background: #eee; }
+  </style>
+  
 </head>
 <body>
-
-<div style="padding-left:321px;">
+  <button onclick="doit()">play</button>
+<button onclick="downRect()">turn down</button>
 <canvas id="myCanvas" width="480" height="320"></canvas>
-</div>
+<pre id="log"></pre>
+  
 
-<script>
+
+
+<script type='text/javascript'>//<![CDATA[
+
+var l = document.getElementById("log");
+var buto = {};
+var rect_timer;
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
-ctx.beginPath();
-ctx.rect(0,0,100,100); // x,y,width,height
-ctx.fillStyle = "#abcabc"; // bg color
-ctx.fill(); // draw bg
-ctx.closePath();
+var n_x;
+var n_y;
+var dir_x;
+var rect_width = 100;
+
+function makeRect() {
+	ctx.beginPath();
+	ctx.rect(n_x,n_y,100,100); // x,y,width,height
+	ctx.fillStyle = "#abcabc"; // bg color
+	ctx.fill(); // draw bg
+	ctx.closePath();
+};
+function drawRect() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    makeRect(rect_timer);
+    n_x += dir_x;
+    cl(n_x+' - '+n_y);
+};
+function downRect() {
+    buto.bt2 = this;
+    n_y += 2;
+};
+function doit() {
+    buto.bt1 = this;
+    n_x = 0-rect_width;
+    n_y = 0;
+    dir_x = Math.ceil(canvas.width/100);
+    rect_timer = setInterval(function() {
+        drawRect();
+		if(n_x > canvas.width) {
+			clearInterval(rect_timer);
+		}
+    },50);
+};
+
+function cl(m) {
+    l.innerHTML = l.innerHTML+'\n'+m;
+};
+//]]> 
+
 </script>
 
 </body>
+
 </html>
