@@ -1,21 +1,24 @@
 <html>
 <head>
-<style></style>
+<style>
+canvas { background: #eee; }
+</style>
 </head>
 <body>
 
 <div style="padding-left:321px;">
-<canvas id="desk" width="600" height="300" style="border:1px solid #222;"></canvas>
+<canvas id="myCanvas" width="480" height="320"></canvas>
 </div>
 
 <script>
-// mdn
-var canvas = document.getElementById("desk");
+var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
-ctx.fillStyle = "green";
-ctx.fillRect(10, 10, 100, 100);
-
+ctx.beginPath();
+ctx.rect(0,0,100,100); // x,y,width,height
+ctx.fillStyle = "#abcabc"; // bg color
+ctx.fill(); // draw bg
+ctx.closePath();
 </script>
 
 </body>
