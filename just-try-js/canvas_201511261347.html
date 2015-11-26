@@ -13,7 +13,10 @@
 
 	<canvas id="cnvs" width="900" height="300"></canvas>
 
+	<pre id="log"></pre>
+
 	<script>
+	var _e_log = document.getElementById('log');
 	var cnvs = document.getElementById('cnvs');
 	var ctx = cnvs.getContext('2d');
 	var bentuk = {
@@ -57,23 +60,29 @@
 	// jadi ini yg namanya "recursion"
 	// sebuah fungsi yg memanggil fungsi itu sendiri
 	function tutupiCnvs() {
-		console.log(bentuk.pers.pos.x+" , "+bentuk.pers.pos.x);
-		var panj = 100;
-		var ting = 100;
-		var per_waktu;
-		bentuk.pers.ukur.panj = cnvs.width/panj;
-		bentuk.pers.ukur.ting = cnvs.width/ting;
+		_log("x: "+bentuk.pers.pos.x+", y:"+bentuk.pers.pos.x);
+		bentuk.pers.ukur.panj = 10;
+		bentuk.pers.ukur.ting = 10;
 		buatPers();
 		bentuk.pers.pos.x += bentuk.pers.ukur.panj;
 		if (bentuk.pers.pos.x < cnvs.width) {
-			setTimeout(tutupiCnvs,0);
+			setTimeout(tutupiCnvs,10);
 		} else {
 			bentuk.pers.pos.x = 0;
 			if (bentuk.pers.pos.y < cnvs.height && bentuk.pers.pos.x < cnvs.width) {
 				bentuk.pers.pos.y += bentuk.pers.ukur.ting;
-				setTimeout(tutupiCnvs,0);
+				setTimeout(tutupiCnvs,10);
 			};
 		}
+	}
+
+	function _log(msg,b) {
+		b = b || false;
+		if (b) {
+			_e_log.innerHTML += msg+"\n";
+		} else {
+			_e_log.innerHTML = msg;
+		};
 	}
 
 	// diluar expr (jadi saya ndak usah nyentuh ini)
