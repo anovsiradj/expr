@@ -35,8 +35,8 @@
 				y: 0
 			},
 			ukur: {
-				panj: 50,
-				ting: 50
+				panj: 30,
+				ting: 20
 			},
 		}
 	}
@@ -49,6 +49,7 @@
 		ctx.fill();
 		ctx.closePath();
 	}
+
 	function buatPers() {
 		ctx.beginPath();
 		ctx.rect(bentuk.pers.pos.x, bentuk.pers.pos.y, bentuk.pers.ukur.panj,bentuk.pers.ukur.ting);
@@ -60,18 +61,21 @@
 	// jadi ini yg namanya "recursion"
 	// sebuah fungsi yg memanggil fungsi itu sendiri
 	function tutupiCnvs() {
-		_log("x: "+bentuk.pers.pos.x+", y:"+bentuk.pers.pos.x);
-		bentuk.pers.ukur.panj = 10;
-		bentuk.pers.ukur.ting = 10;
+		_log("// x: "+bentuk.pers.pos.x+", y:"+bentuk.pers.pos.y);
 		buatPers();
+		var per_pers = 10;
 		bentuk.pers.pos.x += bentuk.pers.ukur.panj;
 		if (bentuk.pers.pos.x < cnvs.width) {
-			setTimeout(tutupiCnvs,10);
+			setTimeout(tutupiCnvs,per_pers);
 		} else {
 			bentuk.pers.pos.x = 0;
-			if (bentuk.pers.pos.y < cnvs.height && bentuk.pers.pos.x < cnvs.width) {
-				bentuk.pers.pos.y += bentuk.pers.ukur.ting;
-				setTimeout(tutupiCnvs,10);
+			bentuk.pers.pos.y += bentuk.pers.ukur.ting;
+			if (bentuk.pers.pos.y < cnvs.height) {
+				setTimeout(tutupiCnvs,per_pers);
+			} else {
+				_log("> // restart:",true);
+				_log("> bentuk.pers.pos = {x:0,y:0}",true);
+				_log("> tutupiCnvs();",true);
 			};
 		}
 	}
@@ -79,13 +83,15 @@
 	function _log(msg,b) {
 		b = b || false;
 		if (b) {
-			_e_log.innerHTML += msg+"\n";
+			_e_log.innerHTML += "\n"+msg;
 		} else {
 			_e_log.innerHTML = msg;
 		};
 	}
 
-	// diluar expr (jadi saya ndak usah nyentuh ini)
+	_log("> tutupiCnvs();",true);
+
+	// diluar experiment (jadi saya ndak usah nyentuh ini)
 	function randhex() { var h = '#'+(Math.random()*0xFFFFFF<<0).toString(16); return h; }
 	</script>
 
