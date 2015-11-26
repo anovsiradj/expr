@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Canvas. Expr:1</title>
+	<style>
+	#cnvs {
+		background-color: #eee;
+	}
+	</style>
+</head>
+<body>
+
+	<canvas id="cnvs" width="900" height="300"></canvas>
+
+	<script>
+	var cnvs = document.getElementById('cnvs');
+	var ctx = cnvs.getContext('2d');
+	var bentuk = {
+		ling: {
+			pos: {
+				x: 100,
+				y: 100
+			},
+			ukur: {
+				rad: 20
+			}
+		},
+		pers: {
+			pos: {
+				x: 0,
+				y: 0
+			},
+			ukur: {
+				panj: 50,
+				ting: 50
+			},
+		}
+	}
+
+	function buatLing() {
+		ctx.beginPath();
+		// x,y,radius, mulai sudut, berhenti sudut
+		ctx.arc(bentuk.ling.pos.x, bentuk.ling.pos.y, 20, 0, Math.PI*2);
+		ctx.fillStyle = randhex();
+		ctx.fill();
+		ctx.closePath();
+	}
+	function buatPers() {
+		ctx.beginPath();
+		ctx.rect(bentuk.pers.pos.x, bentuk.pers.pos.y, bentuk.pers.ukur.panj,bentuk.pers.ukur.ting);
+		ctx.fillStyle = randhex();
+		ctx.fill();
+		ctx.closePath();
+	}
+
+	function tutupiCnvs() {
+		console.log(bentuk.pers.pos.x+" , "+bentuk.pers.pos.x);
+		var panj = 100;
+		var ting = 100;
+		var per_waktu;
+		bentuk.pers.ukur.panj = cnvs.width/panj;
+		bentuk.pers.ukur.ting = cnvs.width/ting;
+		buatPers();
+		bentuk.pers.pos.x += bentuk.pers.ukur.panj;
+		if (bentuk.pers.pos.x < cnvs.width) {
+			setTimeout(tutupiCnvs,0);
+		} else {
+			bentuk.pers.pos.x = 0;
+			if (bentuk.pers.pos.y < cnvs.height && bentuk.pers.pos.x < cnvs.width) {
+				bentuk.pers.pos.y += bentuk.pers.ukur.ting;
+				setTimeout(tutupiCnvs,0);
+			};
+		}
+	}
+
+	// diluar expr (jadi saya ndak usah nyentuh ini)
+	function randhex() { var h = '#'+(Math.random()*0xFFFFFF<<0).toString(16); return h; }
+	</script>
+
+</body>
+</html>
